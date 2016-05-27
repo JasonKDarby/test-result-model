@@ -34,7 +34,7 @@ bintray {
     name = project.name
     userOrg = user
     licenses = ['MIT']
-    vcsUrl = 'TODO'
+    vcsUrl = 'https://github.com/JasonKDarby/test-result-model'
     version {
       name = project.version
       desc = "Test Result Model ${project.version}"

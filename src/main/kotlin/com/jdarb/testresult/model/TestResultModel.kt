@@ -12,7 +12,8 @@ data class Run(
         val id: String = UUID.randomUUID().toString()
 )
 
-fun Run.duration() = Duration.between(startTime, endTime)
+//The type Duration is explicit here to disallow Duration? (nullable Duration that is)
+fun Run.duration(): Duration = Duration.between(startTime, endTime)
 
 enum class State {
     PASS, FAIL, SKIP

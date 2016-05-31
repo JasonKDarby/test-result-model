@@ -1,7 +1,7 @@
-#Test Result Model
+#TestResult - Model
 I need a common model for test results, so: this.
 
-To get it as a dependency (for now) you can add my [bintray repository](https://bintray.com/jasonkdarby/generic/test-result-model/view).
+To get it as a dependency (for now) you can add my [bintray repository](https://bintray.com/jasonkdarby/generic/model/view).
 via gradle:
 ```groovy
 repositories {
@@ -9,7 +9,7 @@ repositories {
 }
 
 dependencies {
-  testCompile 'com.jdarb:test-result-model:0.1'
+  testCompile 'com.jdarb.testresult:model:0.1'
 }
 ```
 

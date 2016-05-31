@@ -16,6 +16,7 @@ apply plugin: 'kotlin'
 
 repositories {
   jcenter()
+  maven { url "http://repository.jetbrains.com/all/" }
 }
 
 group 'com.jdarb'
@@ -23,6 +24,7 @@ version '0.2'
 
 dependencies {
   compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+  testCompile 'org.jetbrains.spek:spek:1.0.25'
 }
 
 bintray {

@@ -13,7 +13,8 @@ data class Run(
 )
 
 //The type Duration is explicit here to disallow Duration? (nullable Duration that is)
-fun Run.duration(): Duration = Duration.between(startTime, endTime)
+val Run.duration: Duration
+    get() = Duration.between(startTime, endTime)
 
 enum class State {
     PASS, FAIL, SKIP

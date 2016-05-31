@@ -19,11 +19,13 @@ repositories {
   maven { url "http://repository.jetbrains.com/all/" }
 }
 
-group 'com.jdarb'
-version '0.2'
+group 'com.jdarb.testresult'
+version '0.3'
 
 dependencies {
   compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+  compile 'com.github.salomonbrys.kotson:kotson:2.2.1'
+  compile 'com.fatboyindustrial.gson-javatime-serialisers:gson-javatime-serialisers:1.1.1'
   testCompile 'org.jetbrains.spek:spek:1.0.25'
 }
 
@@ -39,7 +41,7 @@ bintray {
     vcsUrl = 'https://github.com/JasonKDarby/test-result-model'
     version {
       name = project.version
-      desc = "Test Result Model ${project.version}"
+      desc = "TestResult Model ${project.version}"
       attributes = [:]
     }
   }

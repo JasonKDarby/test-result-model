@@ -1,5 +1,8 @@
 package com.jdarb.testresult.model
 
+import com.fatboyindustrial.gsonjavatime.Converters
+import com.github.salomonbrys.kotson.fromJson
+import com.google.gson.GsonBuilder
 import java.time.Duration
 import java.time.Instant
 import java.util.UUID
@@ -15,6 +18,14 @@ data class Run(
 //The type Duration is explicit here to disallow Duration? (nullable Duration that is)
 val Run.duration: Duration
     get() = Duration.between(startTime, endTime)
+
+fun Run.toJsonString(): String =
+        gson.toJson(this)
+
+fun parseRunFromJson(jsonString: String): Run =
+        gson.fromJson<Run>(jsonString)
+
+private val gson = Converters.registerInstant(GsonBuilder()).setPrettyPrinting().create()
 
 enum class State {
     PASS, FAIL, SKIP

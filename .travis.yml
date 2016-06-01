@@ -9,9 +9,6 @@ before_install:
 after_success:
   - codecov
 
-addons:
-  sauce_connect: true
-
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
 cache:

@@ -13,17 +13,14 @@ data class Run(
         val endTime: Instant,
         val tests: List<Test> = emptyList(),
         val id: String = UUID.randomUUID().toString()
-)
+) {
+    val duration: Duration
+        get() = Duration.between(startTime, endTime)
 
-//The type Duration is explicit here to disallow Duration? (nullable Duration that is)
-val Run.duration: Duration
-    get() = Duration.between(startTime, endTime)
+    fun toJsonString(): String = gson.toJson(this)
+}
 
-fun Run.toJsonString(): String =
-        gson.toJson(this)
-
-fun parseRunFromJson(jsonString: String): Run =
-        gson.fromJson<Run>(jsonString)
+fun parseRunFromJson(jsonString: String): Run = gson.fromJson<Run>(jsonString)
 
 private val gson = Converters.registerInstant(GsonBuilder()).setPrettyPrinting().create()
 
@@ -37,17 +34,18 @@ data class Test(
         val startTime: Instant,
         val endTime: Instant,
         val status: State,
-        val details: Details = noDetails()
-)
-
-fun Test.duration() = Duration.between(startTime, endTime)
+        val details: Details = noDetails
+) {
+    val duration: Duration
+        get() = Duration.between(startTime, endTime)
+}
 
 data class Details(
         val logMessages: List<LogMessage> = emptyList(),
         val childTests: List<Test> = emptyList()
 )
 
-fun noDetails() = Details()
+val noDetails = Details()
 
 data class LogMessage(
         val text: String,

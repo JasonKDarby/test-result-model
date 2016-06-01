@@ -26,3 +26,6 @@ Details describe the components of a step, either tests or logs that describe th
 
 ###LogMessage
 A log message is used to document the actions and/or intermediate results of a test.  In Spock you might use the block labels as log messages.
+
+##Serialization/Deserialization
+A run can be written to json via `toJsonString()` and read from json via `parseRunFromJson()`.

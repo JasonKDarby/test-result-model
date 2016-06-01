@@ -11,7 +11,22 @@ class TestResultModelSpek: Spek({
         val startTime = Instant.EPOCH
         val interval = 1000L
         val endTime = startTime.plusMillis(interval)
-        val run = Run(name = "test", startTime = startTime, endTime = endTime, id = "some")
+
+        val test = Test(
+                name = "test0",
+                description = "a description",
+                startTime = Instant.EPOCH,
+                endTime = Instant.EPOCH.plusMillis(1000),
+                status = State.PASS
+        )
+
+        val run = Run(
+                name = "test",
+                startTime = startTime,
+                endTime = endTime,
+                id = "some",
+                tests = listOf(test)
+        )
 
         val jsonString: String = String(javaClass.classLoader.getResourceAsStream("0.json").readBytes())
 

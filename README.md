@@ -9,7 +9,7 @@ repositories {
 }
 
 dependencies {
-  testCompile 'com.jdarb.testresult:model:0.3'
+  testCompile 'com.jdarb.testresult:model:0.4'
 }
 ```
 

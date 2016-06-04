@@ -3,6 +3,9 @@ package com.jdarb.testresult.model
 import com.fatboyindustrial.gsonjavatime.Converters
 import com.github.salomonbrys.kotson.fromJson
 import com.google.gson.GsonBuilder
+import org.everit.json.schema.loader.SchemaLoader
+import org.json.JSONObject
+import org.json.JSONTokener
 import java.time.Duration
 import java.time.Instant
 import java.util.UUID
@@ -20,7 +23,15 @@ data class Run(
     fun toJsonString(): String = gson.toJson(this)
 }
 
-fun parseRunFromJson(jsonString: String): Run = gson.fromJson<Run>(jsonString)
+fun validateRunJson(jsonString: String): Unit =
+        SchemaLoader
+                .load(JSONObject(JSONTokener(Run::class.java.getResourceAsStream("ModelSchema.json"))))
+                .validate(JSONObject(jsonString))
+
+fun parseRunFromJson(jsonString: String): Run {
+    validateRunJson(jsonString)
+    return gson.fromJson<Run>(jsonString)
+}
 
 private val gson = Converters.registerInstant(GsonBuilder()).setPrettyPrinting().create()
 

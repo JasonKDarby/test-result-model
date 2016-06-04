@@ -30,5 +30,5 @@ A log message is used to document the actions and/or intermediate results of a t
 ##Serialization/Deserialization
 A run can be written to json via `toJsonString()` and read from json via `parseRunFromJson()`.
 
-###Validation
+##Validation
 `validateRunJson()` can be used to validate that a `String` will parse into a `Run`.

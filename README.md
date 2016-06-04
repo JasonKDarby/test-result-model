@@ -32,3 +32,4 @@ A run can be written to json via `toJsonString()` and read from json via `parseR
 
 ##Validation
 `validateRunJson()` can be used to validate that a `String` will parse into a `Run`.
+The validation is based on [everit-org/json-schema](https://github.com/everit-org/json-schema) using [this schema](src/main/resources/com/jdarb/testresult/model/ModelSchema.json).

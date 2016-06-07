@@ -1,7 +1,5 @@
 {
   "name": "test",
-  "startTime": "1970-01-01T00:00:00Z",
-  "endTime": "1970-01-01T00:00:01Z",
   "tests": [
     {
       "name": "test0",
@@ -15,5 +13,7 @@
       }
     }
   ],
-  "id": "some"
+  "id": "some",
+  "startTime": "1970-01-01T00:00:00Z",
+  "endTime": "1970-01-01T00:00:01Z"
 }

@@ -12,14 +12,11 @@ import java.util.UUID
 
 data class Run(
         val name: String,
-        val startTime: Instant,
-        val endTime: Instant,
         val tests: List<Test> = emptyList(),
-        val id: String = UUID.randomUUID().toString()
-) {
-    val duration: Duration
-        get() = Duration.between(startTime, endTime)
-
+        val id: String = UUID.randomUUID().toString(),
+        override val startTime: Instant,
+        override val endTime: Instant
+) : Timed {
     fun toJsonString(): String = gson.toJson(this)
 }
 
@@ -42,14 +39,11 @@ enum class State {
 data class Test(
         val name: String,
         val description: String,
-        val startTime: Instant,
-        val endTime: Instant,
+        override val startTime: Instant,
+        override val endTime: Instant,
         val status: State,
         val details: Details = noDetails
-) {
-    val duration: Duration
-        get() = Duration.between(startTime, endTime)
-}
+) : Timed
 
 data class Details(
         val logMessages: List<LogMessage> = emptyList(),
@@ -62,3 +56,10 @@ data class LogMessage(
         val text: String,
         val instant: Instant = Instant.now()
 )
+
+interface Timed {
+    val startTime: Instant
+    val endTime: Instant
+    val duration: Duration
+        get() = Duration.between(startTime, endTime)
+}

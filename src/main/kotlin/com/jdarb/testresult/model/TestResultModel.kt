@@ -16,9 +16,7 @@ data class Run(
         val id: String = UUID.randomUUID().toString(),
         override val startTime: Instant,
         override val endTime: Instant
-) : Timed {
-    fun toJsonString(): String = gson.toJson(this)
-}
+) : Timed, JSONizeable
 
 fun validateRunJson(jsonString: String): Unit =
         SchemaLoader
@@ -62,4 +60,8 @@ interface Timed {
     val endTime: Instant
     val duration: Duration
         get() = Duration.between(startTime, endTime)
+}
+
+interface JSONizeable {
+    fun toJsonString(): String = gson.toJson(this)
 }

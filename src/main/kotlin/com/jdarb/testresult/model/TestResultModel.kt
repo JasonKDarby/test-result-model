@@ -40,15 +40,9 @@ data class Test(
         override val startTime: Instant,
         override val endTime: Instant,
         val status: State,
-        val details: Details = noDetails
-) : Timed
-
-data class Details(
         val logMessages: List<LogMessage> = emptyList(),
-        val childTests: List<Test> = emptyList()
-)
-
-val noDetails = Details()
+        val children: List<Test> = emptyList()
+) : Timed
 
 data class LogMessage(
         val text: String,

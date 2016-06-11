@@ -22,11 +22,7 @@
     }
   },
   "required": [
-    "name",
-    "startTime",
-    "endTime",
-    "tests",
-    "id"
+
   ],
   "definitions": {
     "test": {
@@ -48,24 +44,18 @@
         "status": {
           "type": "string"
         },
-        "details": {
-          "type": "object",
-          "properties": {
-            "logMessages": {
-              "type": "array",
-              "items": { "$ref": "#/definitions/logmessage" }
-            },
-            "childTests": {
-              "type": "array",
-              "items": { "$ref": "#/definitions/test"}
-            }
-          },
-          "required": [
-            "logMessages",
-            "childTests"
-          ]
+        "logMessages": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/logmessage" }
+        },
+        "children": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/test" }
         }
-      }
+      },
+      "required": [
+
+      ]
     },
     "logmessage": {
       "properties": {

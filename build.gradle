@@ -21,7 +21,7 @@ repositories {
 }
 
 group 'com.jdarb.testresult'
-version '0.4'
+version '0.5'
 
 dependencies {
   compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

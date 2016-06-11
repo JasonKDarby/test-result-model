@@ -17,7 +17,7 @@ class TestResultModelSpek: Spek({
                 description = "a description",
                 startTime = Instant.EPOCH,
                 endTime = Instant.EPOCH.plusMillis(1000),
-                status = State.PASS
+                state = State.PASS
         )
 
         val run = Run(

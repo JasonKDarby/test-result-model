@@ -31,7 +31,7 @@ fun parseRunFromJson(jsonString: String): Run {
 private val gson = Converters.registerInstant(GsonBuilder()).setPrettyPrinting().create()
 
 enum class State {
-    PASS, FAIL, SKIP
+    STARTED, PASS, FAIL, SKIP
 }
 
 data class Test(
@@ -39,7 +39,7 @@ data class Test(
         val description: String,
         override val startTime: Instant,
         override val endTime: Instant,
-        val status: State,
+        val state: State,
         val logMessages: List<LogMessage> = emptyList(),
         val children: List<Test> = emptyList()
 ) : Timed
